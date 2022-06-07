@@ -1,0 +1,280 @@
+
+  
+{
+  "languageLabel": "English",
+  "html": {
+    "title": "DataMap",
+    "description": "Tools for analyzing DrumWave DataMap"
+  },
+  "appTitle": {
+    "short": "DataMap",
+    "long": "DataMap Explorer",
+    "subheading": "Tools for analyzing your Data Ecosystem"
+  },
+  "appDescription1": "Sampo is a web service for searching and studying place names. The search results can be viewed as a table, on maps, and as statistical distributions. Historical and current background maps are provided.",
+  "appDescription2": "Start by choosing source dataset(s) and input a place name on the search field. Alternatively you can search by area.",
+  "selectPerspective": "Select a perspective to search and browse the knowledge graph:",
+  "mainPageImageLicence": "Original images from SA-kuva",
+  "backendErrorText": "One of the backend services is not available at the moment. Please try again later.",
+  "topBar": {
+    "feedback": "feedback",
+    "info": {
+      "info": "Info",
+      "blog": "Project blog",
+      "blogUrl": "https://seco.cs.aalto.fi",
+      "aboutThePortal": "About the Portal"
+    },
+    "searchBarPlaceHolder": "Search all content",
+    "searchBarPlaceHolderShort": "Search",
+    "instructions": "instructions"
+  },
+  "facetBar": {
+    "results": "Results",
+    "activeFilters": "Active filters:",
+    "removeAllFilters": "Remove all",
+    "narrowDownBy": "Narrow down by",
+    "filterOptions": "Filter options",
+    "filterByName": "Filter by name",
+    "filterByBoundingBox": "Filter by bounding box",
+    "selectionOptions": "Selection options",
+    "selectAlsoSubconcepts": "Automatically select all subconcepts",
+    "doNotSelectSubconcepts": "Do not select subconcepts",
+    "sortingOptions": "Sorting options",
+    "sortAlphabetically": "Sort alphabetically",
+    "sortByNumberOfSearchResults": "Sort by number of search results",
+    "useDisjunction": "Use logical OR between selections",
+    "useConjuction": "Use logical AND between selections",
+    "minYear": "Min year",
+    "maxYear": "Max year",
+    "min": "Min",
+    "max": "Max",
+    "facetSearchFieldPlaceholder": "Search...",
+    "applyFacetSelection": "apply",
+    "pieChart": {
+      "tooltip": "Pie chart"
+    },
+    "barChart": {
+      "tooltip": "Bar chart",
+      "language": {
+        "title": "Language",
+        "xaxisTitle": "Language",
+        "yaxisTitle": "Manuscript count",
+        "seriesTitle": "Manuscript count"
+      }
+    },
+    "lineChart": {
+      "tooltip": "Line chart",
+      "productionTimespan": {
+        "title": "Manuscript production by decade",
+        "xaxisTitle": "Decade",
+        "yaxisTitle": "Manuscript count",
+        "seriesTitle": "Manuscript count"
+      }
+    }
+  },
+  "tabs": {
+    "table": "table",
+    "pie-chart": "pie chart",
+    "line-chart": "line chart",
+    "map": "map",
+    "choropleth-map": "choropleth map",
+    "population-ratio-map": "population ratio",
+    "export": "export"
+  },
+  "table": {
+    "rowsPerPage": "Rows per page",
+    "of": "of"
+  },
+  "exportToYasgui": "open the result table query in yasgui sparql editor",
+  "openInLinkedDataBrowser": "open in linked data browser",
+  "resultsAsCSV": "download the search results as a CSV table",
+  "facets": {
+    "dateFacet": {
+      "invalidDate": "Epäkelpo päivämäärä.",
+      "toBeforeFrom": "Alkupäivämäärän täytyy olla ennen loppupäivämäärää.",
+      "minDate": "Aikaisin sallittu päivämäärä on {minDate}",
+      "maxDate": "Myöhäisin sallittu päivämäärä on {maxDate}",
+      "cancel": "Peruuta",
+      "fromLabel": "Alku",
+      "toLabel": "Loppu"
+    },
+    "textFacet": {
+      "inputLabel": "Etsi nimellä"
+    },
+    "sliderFacet": {
+      "invalidStartOrEnd": "Min value must be smaller than max value. The smallest value can be {min} and the largest value can be {max}."
+    }
+  },
+  "leafletMap": {
+    "basemaps": {
+      "mapbox": {
+        "light-v10": "Mapbox Light"
+      },
+      "googleRoadmap": "Google Maps",
+      "topographicalMapNLS": "Topographical map (National Land Survey of Finland)",
+      "backgroundMapNLS": "Background map (National Land Survey of Finland)"
+    },
+    "externalLayers": {
+      "WFS_MV_Kulttuuriymparisto:Arkeologiset_kohteet_alue": "Register of Archaeological Sites, areas (Finnish Heritage Agency)",
+      "WFS_MV_Kulttuuriymparisto:Arkeologiset_kohteet_piste": "Register of Archaeological Sites, points (Finnish Heritage Agency)",
+      "WFS_MV_KulttuuriymparistoSuojellut:Muinaisjaannokset_alue": "Register of Archaeological Sites, areas (Finnish Heritage Agency)",
+      "WFS_MV_KulttuuriymparistoSuojellut:Muinaisjaannokset_piste": "Register of Archaeological Sites, points (Finnish Heritage Agency)",
+      "fhaLidar": "Elevation model (Finnish Heritage Agency)",
+      "karelianMaps": "Karelian maps, 1:100 000 topographic (SeCo)",
+      "senateAtlas": "Senate atlas, 1:21 000 topographic (SeCo)",
+      "kotus:pitajat": "Finnish parishes in 1938 (Institute for the Languages of Finland)",
+      "kotus:rajat-sms-alueet": "Dialectical regions in Finland (Institute for the Languages of Finland)",
+      "kotus:rajat-sms-alueosat": "Dialectical subregions in Finland (Institute for the Languages of Finland)",
+      "kotus:rajat-lansi-ita": "Border between western and eastern dialects in Finland (Institute for the Languages of Finland)"
+    },
+    "mapModeButtons": {
+      "markers": "Markers",
+      "heatmap": "Heatmap"
+    },
+    "wrongZoomLevel": "The map zoom level has to at least 11",
+    "wrongZoomLevelFHA": "The map zoom level has to be at least 13 in order to show this layer",
+    "tooManyResults": "More than 500 results, please use clustered map or heatmap"
+  },
+  "instancePageGeneral": {
+    "introduction": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> This landing page provides a human-readable summary of the data points that link to this {entity}. The data included in this summary reflect only those data points used in the MMM Portal. Click the Open in Linked Data Browser on button on the Export tab to view the complete set of classes and properties linked to this record. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> To cite this record, use its url. You can use also use the url to return directly to the record at any time. </p>",
+    "repetition": "<h6 class=\"MuiTypography-root MuiTypography-h6\"> Repetition of data </h6> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> The same or similar data may appear within a single data field multiple times. This repetition occurs due to the merging of multiple records from different datasets to create the MMM record. </p>"
+  },
+  "deckGlMap": {
+    "arcColouring": "Arc colouring:",
+    "showMoreInformation": "Click to show more information.",
+    "manuscriptMigrations": {
+      "legendTitle": "Arc colouring",
+      "legendFrom": "Manuscript production place",
+      "legendTo": "Last known location",
+      "from": "Production place:",
+      "to": "Last known location:",
+      "count": "Manuscript count",
+      "listHeadingSingleInstance": "Manuscript:",
+      "listHeadingMultipleInstances": "Manuscripts:"
+    }
+  },
+  "apexCharts": {
+    "grouping": "Group by:",
+    "property": "Xaxis:",
+    "chartType": "Chart type:",
+    "pie": "pie chart",
+    "bar": "bar chart",
+    "resultClasses": {
+      "deathsByHisclass": "hisClass5",
+      "deathsByPerishingCategory": "perishing category",
+      "deathsByGender": "gender",
+      "deathsByMaritalStatus": "marital status",
+      "deathsByMotherTongue": "mother tongue",
+      "deathsByMonth": "death month",
+      "deathsByLineMonth": "death month",
+      "deathsByAge": "age",
+      "ageAverage": "average age",
+      "deathsByRank": "rank",
+      "deathsByNumberOfChildren": "number of children",
+      "deathsByProvinceOfDomicile": "province of domicile",
+      "deathsByProvinceOfDomicileRatio": "proportion of deaths from a province (defined in query)",
+      "deathsByRatioToAll": "proportion of the filtered group from all death records",
+      "deathsByOfficerRatio": "proportion of officers of the filtered group",
+      "deathsByRatioFromOfficers": "proportion of filtered group of all officers"
+    },
+    "numberOfCasualties": "Number of casualties"
+  },
+  "perspectives": {
+    "casualties": {
+      "label": "Casualties",
+      "facetResultsType": "casualties",
+      "shortDescription": "Finnish war casualties in the Second World War",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> </p>",
+      "instancePage": {
+        "label": "Death record",
+        "description": ""
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": "Uniform Resource Identifier"
+        },
+        "prefLabel": {
+          "label": "Name",
+          "description": "Full name.",
+          "textFacetInputPlaceholder": "Search..."
+        },
+        "occupation": {
+          "label": "Occupation",
+          "description": "Occupation."
+        },
+        "municipalityOfDomicile": {
+          "label": "Municipality of domicile",
+          "description": "municipality_of_domicile."
+        },
+        "municipalityOfDeath": {
+          "label": "Municipality of death",
+          "description": "municipality_of_death."
+        },
+        "rank": {
+          "label": "Rank",
+          "description": "Rank."
+        },
+        "dateOfDeath": {
+          "label": "Date of death",
+          "description": "Date of death."
+        },
+        "unit": {
+          "label": "Unit",
+          "description": "Unit."
+        },
+        "gender": {
+          "label": "Gender",
+          "description": "Gender."
+        },
+        "motherTongue": {
+          "label": "Mother tongue",
+          "description": "Mother tongue."
+        },
+        "deathTimeTimespan": {
+          "label": "Death date",
+          "description": ""
+        },
+        "maritalStatus": {
+          "label": "Marital status",
+          "description": ""
+        },
+        "perishingCategory": {
+          "label": "Perishing category",
+          "description": ""
+        }
+      }
+    },
+    "municipalities": {
+      "label": "Municipalities",
+      "facetResultsType": "municipalities",
+      "shortDescription": "Finnish municipalities 1939-1944",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> </p>",
+      "instancePage": {
+        "label": "Death record",
+        "description": ""
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": "Uniform Resource Identifier"
+        },
+        "prefLabel": {
+          "label": "Name",
+          "description": "Name",
+          "textFacetInputPlaceholder": "Search..."
+        },
+        "county": {
+          "label": "County",
+          "description": "County"
+        },
+        "source": {
+          "label": "Source",
+          "description": "Source"
+        }
+      }
+    }
+  },
+  "instructions": "<h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\"> Instructions </h1> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> The search functionality of this semantic portal is based on the <a href=\"https://doi.org/10.2200/S00190ED1V01Y200904ICR005\" target='_blank' rel='noopener noreferrer'> faceted search</a> paradigm. By default each perspective displays all results from the corresponding class. This default result set can be narrowed down by using the filters on the left. </p> <h2 class=\"MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom\"> Using a single filter </h2> <h3 class=\"MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom\"> Selecting values within a filter </h3> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> All possible values for a filter are displayed either as a list or as a hierarchical tree structure (if available). The number of results is shown in brackets for each value. Once a value is selected, the results are automatically updated. To prevent further selections that do not return any results, also the possible values for all other filters are updated at the same time. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Multiple values can be selected within a single filter. Selecting multiple values generates results that contain any of the selected values. For example, selecting both <i>Saint Augustine</i> and <i>Saint Jerome</i> as an Author returns results that include either <i>Saint Augustine</i> <strong>OR</strong> <i>Saint Jerome</i> as an Author. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Selected values of a filter appear in the Active filters section at the top of the list of filters. To deselect a filter, click the X mark next to it within the Active filters section. You can also deselect a filter value by unchecking the checkmark in the filter’s value list. The Active filters section only appears if there are filter values currently selected. </p> <h3 class=\"MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom\"> Searching within a filter </h3> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Search within a filter by using the search field at the top of each filter. All possible values of a filter remain visible at all times. The values of the filter that match the search term are indicated by a purple underline. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Steps for searching within filters: </p> <ol class=\"MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom\"> <li> Type search term into search field. If there are matches, a number will appear to the right of the search field, indicating the number of filter values that match the search term. </li> <li> Click the arrows to the right of the search field to cycle through the results. As you click the arrow, a different filter value will appear at the top of the list. Matched filters are underlined in purple. </li> <li> Click the checkmark next to a filter value to activate it. The results (and also other filters) are automatically updated. </li> </ol> <h2 class=\"MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom\"> Using multiple filters simultaneously </h2> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> The effectiveness of faceted search is realized when multiple filters are applied at the same time. As in many e-commerce sites, a logical AND is always used between the filters. For example selecting <i>Saint Augustine </i> and <i>Saint Jerome</i> as an Author and <i>Sir Thomas Phillipps</i> and <i> Thomas Thorpe</i> as an Owner, the results are narrowed down as follows: </p> <p class=\"MuiTypography-root MuiTypography-body1\"> (Author: <i>Saint Augustine</i> <strong>OR</strong> Author: <i>Saint Jerome</i>) </p> <p class=\"MuiTypography-root MuiTypography-body1\"> <strong>AND</strong> </p> <p class=\"MuiTypography-root MuiTypography-body1\"> (Owner: <i>Sir Thomas Phillipps</i> <strong>OR</strong> Owner: <i>Thomas Thorpe</i>) </p>",
+  "feedback": "<h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\"> Feedback </h1> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> This semantic portal has been developed by ... </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> We are interested in your feedback on the functionality, coverage, and usefulness of the portal and its data. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Please complete our <a href=\"\" target='_blank' rel='noopener noreferrer'>Feedback Survey Form (add link).</a> </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> You can also contact us via email: ... or DM us on Twitter: ... </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Please be aware that this portal’s response times may be affected by the size and complexity of the underlying knowledge graph. </p>"
+}

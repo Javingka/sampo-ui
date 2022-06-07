@@ -1,0 +1,136 @@
+{
+    "id": "municipalities",
+    "endpoint": {
+        "url": "https://ldf.fi/warsa/sparql",
+        "useAuth": false,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesMunicipalities.js",
+    "baseURI": "http://ldf.fi/warsa",
+    "URITemplate": "<BASE_URI>/places/municipalities/<LOCAL_ID>",
+    "facetClass": "suo:kunta",
+    "langTag": "en",
+    "frontPageImage": "main_page/hautausmaa.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "map",
+    "defaultInstancePageTab": "table",
+    "maps": {
+        "municipalitiesMap": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
+        }
+    },
+    "resultClasses": {
+        "municipalities": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "municipalityPropertiesFacetResults",
+                "pagesize": 25,
+                "sortBy": "prefLabel",
+                "sortDirection": "asc"
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "municipalityPropertiesFacetResults",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 1,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "municipalitiesMap": {
+            "tabID": 1,
+            "component": "Deck",
+            "tabPath": "map",
+            "tabIcon": "LocationOn",
+            "sparqlQuery": "municipalitiesPolygonsQuery",
+            "facetClass": "municipalities",
+            "filterTarget": "id",
+            "layerType": "polygonLayer",
+            "postprocess": {
+                "func": "toPolygonLayerFormat",
+                "config": {
+                    "polygonColor": [
+                        255,
+                        255,
+                        204
+                    ]
+                }
+            }
+        },
+        "municipalitiesMapDialog": {
+            "sparqlQuery": "municipalitiesPolygonsDialogQuery"
+        },
+        "export": {
+            "tabID": 2,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "resultClass": "casualties",
+            "facetClass": "casualties"
+        }
+    },
+    "properties": [
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "county",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "source",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        }
+    ],
+    "facets": {
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "skos:prefLabel",
+            "textQueryProperty": "skos:prefLabel"
+        }
+    }
+}
