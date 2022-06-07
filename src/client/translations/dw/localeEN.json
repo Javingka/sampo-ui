@@ -180,10 +180,10 @@
     "numberOfCasualties": "Number of casualties"
   },
   "perspectives": {
-    "casualties": {
-      "label": "Casualties",
-      "facetResultsType": "casualties",
-      "shortDescription": "Finnish war casualties in the Second World War",
+    "actors": {
+      "label": "Actors",
+      "facetResultsType": "actors",
+      "shortDescription": "Actors Entities within the Data Ecosystem",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> </p>",
       "instancePage": {
         "label": "Death record",

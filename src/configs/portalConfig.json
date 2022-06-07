@@ -1,10 +1,9 @@
 {
-    "portalID": "warsa",
+    "portalID": "dw",
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
-            "casualties",
-            "municipalities"
+            "actors"
         ],
         "onlyInstancePages": [ ]
     },
@@ -29,7 +28,7 @@
     },
     "knowledgeGraphMetadataConfig": {
         "showTable": false,
-        "perspective": "perspective1" 
+        "perspective": "actors" 
     },
     "layoutConfig": {
         "colorPalette": {
@@ -71,7 +70,7 @@
             ]
         },
         "mainPage": {
-            "bannerImage": "main_page/mmm-banner.jpg",
+            "bannerImage": "main_page/op4_fix.png",
             "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
             "bannerReducedHeight": 220,

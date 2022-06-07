@@ -1,0 +1,604 @@
+{
+    "id": "actors",
+    "endpoint": {
+        "url": "https://ldf.fi/warsa/sparql",
+        "useAuth": false,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesActors.js",
+    "baseURI": "http://ldf.fi/mmm",
+    "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
+    "facetClass": "warsa:DeathRecord",
+    "frontPageImage": "main_page/grow-your-real-estate-network-1.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "maps": {
+        "deathsByMunicipalityOfDomicile": {
+            "center": [
+                65.184809,
+                27.314050
+            ],
+            "zoom": 4
+        }
+    },
+    "resultClasses": {
+        "actors": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "casualtyPropertiesFacetResults",
+                "pagesize": 10,
+                "sortBy": null,
+                "sortDirection": null
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "casualtyPropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 1,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "casualtiesPieChart": {
+            "tabID": 1,
+            "component": "ApexCharts",
+            "doNotRenderOnMount": true,
+            "tabPath": "pie-chart",
+            "tabIcon": "PieChart",
+            "facetClass": "casualties",
+            "dropdownForResultClasses": true,
+            "defaultResultClass": "deathsByPerishingCategory",
+            "resultClasses": {
+                "deathsByPerishingCategory": {
+                    "sparqlQuery": "deathsByPerishingCategoryQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "deathsByMaritalStatus": {
+                    "sparqlQuery": "deathsByMaritalStatusQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "deathsByGender": {
+                    "sparqlQuery": "deathsByGenderQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "deathsByMotherTongue": {
+                    "sparqlQuery": "deathsByMotherTongueQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "deathsByHisclass": {
+                    "sparqlQuery": "deathsByHisclassQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "deathsByMonth": {
+                    "sparqlQuery": "deathsByMonthQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData",
+                            "sortByLocaleCompare": "category"
+                        }
+                    ]
+                },
+                "deathsByProvinceOfDomicile": {
+                    "sparqlQuery": "deathsByProvinceOfDomicileQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "deathsByRank": {
+                    "sparqlQuery": "deathsByRankQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": null,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                }
+            }
+        },
+        "casualtiesLineChart": {
+            "tabID": 2,
+            "component": "ApexCharts",
+            "doNotRenderOnMount": true,
+            "tabPath": "line-chart",
+            "tabIcon": "ShowChart",
+            "facetClass": "casualties",
+            "dropdownForResultClasses": true,
+            "defaultResultClass": "deathsByLineMonth",
+            "resultClasses": {
+                "deathsByLineMonth": {
+                    "sparqlQuery": "deathsByLineMonthQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapMonthLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Month",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "Number of casualties",
+                    "seriesTitle": "Number of casualties",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "deathsByAge": {
+                    "sparqlQuery": "deathsByAgeQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Age",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "Number of casualties",
+                    "seriesTitle": "Number of casualties",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "deathsByNumberOfChildren": {
+                    "sparqlQuery": "deathsByNumberOfChildrenQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Number of children",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "Number of casualties",
+                    "seriesTitle": "Number of casualties",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "deathsByOfficerRatio": {
+                    "sparqlQuery": "deathsByOfficerRatioQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapMonthLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Month",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "Proportion of officers",
+                    "seriesTitle": "Proportion of officers",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "deathsByProvinceOfDomicileRatio": {
+                    "sparqlQuery": "deathsByProvinceOfDomicileRatioQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapMonthLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Month",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "",
+                    "seriesTitle": "",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "deathsByRatioFromOfficers": {
+                    "sparqlQuery": "deathsByRatioFromOfficersQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapMonthLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Month",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "",
+                    "seriesTitle": "",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "deathsByRatioToAll": {
+                    "sparqlQuery": "deathsByRatioToAllQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapMonthLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Month",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "",
+                    "seriesTitle": "",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                },
+                "ageAverage": {
+                    "sparqlQuery": "ageAverageQuery",
+                    "filterTarget": "record",
+                    "resultMapper": "mapMonthLineChart",
+                    "createChartData": "createSingleLineChartData",
+                    "xaxisType": "category",
+                    "xaxisTitle": "Month",
+                    "xaxisTickAmount": 30,
+                    "yaxisTitle": "",
+                    "seriesTitle": "",
+                    "stroke": {
+                        "width": 2
+                    },
+                    "resultMapperConfig": {
+                        "fillEmptyValues": true
+                    }
+                }
+            }
+        },
+        "deathsByMunicipalityOfDomicile": {
+            "tabID": 3,
+            "component": "Deck",
+            "tabPath": "choropleth-map",
+            "tabIcon": "LocationOn",
+            "sparqlQuery": "deathsByMunicipalityOfDomicileQuery",
+            "facetClass": "casualties",
+            "filterTarget": "record",
+            "layerType": "polygonLayer",
+            "postprocess": {
+                "func": "toPolygonLayerFormat",
+                "config": {
+                    "ckmeansClustering": true
+                }
+            }
+        },
+        "export": {
+            "tabID": 4,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "resultClass": "casualties",
+            "facetClass": "casualties"
+        }
+    },
+    "properties": [
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "rank",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "deathTimeTimespan",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "municipalityOfDomicile",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "municipalityOfDeath",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "occupation",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "perishingCategory",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "motherTongue",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "unit",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "gender",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "maritalStatus",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        }
+    ],
+    "facets": {
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "skos:prefLabel",
+            "textQueryProperty": "skos:prefLabel"
+        },
+        "rank": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "hierarchical",
+            "filterType": "uriFilter",
+            "parentProperty": "dct:isPartOf",
+            "predicate": "casualties:rank",
+            "searchField": true,
+            "sortByPredicate": "casualties:rank/skos:prefLabel",
+            "spatialFilterButton": true
+        },
+        "municipalityOfDeath": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "hierarchical",
+            "filterType": "uriFilter",
+            "parentProperty": "geos:sfWithin",
+            "predicate": "casualties:municipality_of_death/casualties:preferred_municipality",
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "casualties:municipality_of_death/casualties:preferred_municipality/skos:prefLabel"
+        },
+        "municipalityOfDomicile": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "hierarchical",
+            "filterType": "uriFilter",
+            "parentProperty": "geos:sfWithin",
+            "predicate": "casualties:municipality_of_domicile/casualties:preferred_municipality",
+            "searchField": true,
+            "sortButton": true,
+            "sortByPredicate": "casualties:municipality_of_domicile/casualties:preferred_municipality/skos:prefLabel"
+        },
+        "occupation": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "hierarchical",
+            "filterType": "uriFilter",
+            "parentProperty": "ammo:hisclass5",
+            "predicate": "bioc:has_occupation",
+            "searchField": true,
+            "sortByPredicate": "bioc:has_occupation/skos:prefLabel",
+            "spatialFilterButton": true
+        },
+        "perishingCategory": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "casualties:perishing_category",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "casualties:perishing_category/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "unit": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "casualties:unit",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "casualties:unit/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "maritalStatus": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "warsa:marital_status",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "warsa:marital_status/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "motherTongue": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "warsa:mother_tongue",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "warsa:mother_tongue/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "gender": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = 'fi')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "warsa:gender",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "warsa:gender/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "deathTimeTimespan": {
+            "containerClass": "three",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "dateFilter",
+            "max": "1945-12-31",
+            "min": "1939-01-01",
+            "predicate": "^crm:P70i_is_documented_in/^crm:P100_was_death_of/crm:P4_has_time-span",
+            "sortByAscPredicate": "^crm:P70i_is_documented_in/^crm:P100_was_death_of/crm:P4_has_time-span/crm:P82a_begin_of_the_begin",
+            "sortByDescPredicate": "^crm:P70i_is_documented_in/^crm:P100_was_death_of/crm:P4_has_time-span/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P82a_begin_of_the_begin"
+        }
+    }
+}
