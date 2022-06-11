@@ -9,6 +9,7 @@
     "baseURI": "http://ldf.fi/mmm",
     "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
     "facetClass": "dw:Dataset",
+    "namedGraph": "?g",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [

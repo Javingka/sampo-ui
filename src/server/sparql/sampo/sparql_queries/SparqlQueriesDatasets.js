@@ -33,7 +33,7 @@ export const datasetProperties = `
     }
     UNION
     {
-      ?id 	owl:equivalentClass ?fields__id .
+      ?id 	dw:hasColumn ?fields__id .
       ?fields__id rdfs:label ?fields__prefLabel .
       BIND(CONCAT("/actors/page/", REPLACE(STR(?fields__id), "^.*\\\\/(.+)", "$1")) AS ?fields__dataProviderUrl)
     }

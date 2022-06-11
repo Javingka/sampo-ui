@@ -209,9 +209,9 @@
           "description": "The name or title of the Work.",
           "textFacetInputPlaceholder": "Search..."
         },
-        "author": {
-          "label": "Equivalent Class",
-          "description": "The author(s) associated with the Work. Because of the structure of entries in the Schoenberg Database, the authors shown as being associated with a Work may actually be associated with other Works in the same manuscript instead."
+        "fields": {
+          "label": "Fields",
+          "description": "Field of Dataset"
         },
         "language": {
           "label": "Language",
