@@ -4,9 +4,11 @@ import { runNetworkQuery } from './NetworkApi'
 import { makeObjectList, mapCount } from './Mappers'
 import { generateConstraintsBlock } from './Filters'
 import {
+  countQueryNamedGraph,
   countQuery,
   facetResultSetQuery,
-  instanceQuery
+  instanceQuery,
+  facetResultSetQueryNamedGraph
 } from './SparqlQueriesGeneral'
 
 export const getPaginatedResults = ({
@@ -19,7 +21,7 @@ export const getPaginatedResults = ({
   sortDirection,
   resultFormat
 }) => {
-  let q = facetResultSetQuery
+  let q = facetResultSetQueryNamedGraph
   const perspectiveConfig = backendSearchConfig[resultClass]
   const {
     endpoint,
@@ -73,6 +75,19 @@ export const getPaginatedResults = ({
     q = q.replace('<ORDER_BY_TRIPLE>', sortByPattern)
     q = q = q.replace('<ORDER_BY>', `ORDER BY (!BOUND(?orderBy)) ${sortDirection}(?orderBy)`)
   }
+
+
+  // fill template with named graph pattern
+  const namedGraph = perspectiveConfig.namedGraph 
+  if(namedGraph && namedGraph.length > 0 ){
+    q = q.replace('<NAMEDGRAPH_0>', `GRAPH ${namedGraph} {`)
+    q = q.replace('<NAMEDGRAPH_1>', `}`)
+  } else {
+    q = q.replace('<NAMEDGRAPH_0>', '')
+    q = q.replace('<NAMEDGRAPH_1>', '')
+  }
+
+
   q = q.replace(/<FACET_CLASS>/g, facetClass)
   q = q.replace('<PAGE>', `LIMIT ${pagesize} OFFSET ${page * pagesize}`)
   q = q.replace('<RESULT_SET_PROPERTIES>', propertiesQueryBlock)
@@ -214,7 +229,7 @@ export const getResultCount = ({
   constraints,
   resultFormat
 }) => {
-  let q = countQuery
+  let q = countQueryNamedGraph
   const perspectiveConfig = backendSearchConfig[resultClass]
   const {
     endpoint,
@@ -233,6 +248,17 @@ export const getResultCount = ({
       filterTripleFirst: true
     }))
   }
+
+  // fill template with named graph pattern
+  const namedGraph = perspectiveConfig.namedGraph 
+  if(namedGraph && namedGraph.length > 0 ){
+    q = q.replace('<NAMEDGRAPH_0>', `GRAPH ${namedGraph} {`)
+    q = q.replace('<NAMEDGRAPH_1>', `}`)
+  } else {
+    q = q.replace('<NAMEDGRAPH_0>', '')
+    q = q.replace('<NAMEDGRAPH_1>', '')
+  }
+
   q = q.replace(/<FACET_CLASS>/g, perspectiveConfig.facetClass)
   // console.log(endpoint.prefixes + q)
   return runSelectQuery({

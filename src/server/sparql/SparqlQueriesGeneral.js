@@ -6,6 +6,16 @@ export const instanceQuery = `
   }
 `
 
+export const countQueryNamedGraph = `
+  SELECT (COUNT(DISTINCT ?id) as ?count)
+  WHERE {
+    <NAMEDGRAPH_0>
+      <FILTER>
+      VALUES ?facetClass { <FACET_CLASS> }
+      ?id a ?facetClass .
+    <NAMEDGRAPH_1>
+  }
+`
 export const countQuery = `
   SELECT (COUNT(DISTINCT ?id) as ?count)
   WHERE {
@@ -30,7 +40,26 @@ export const fullTextQuery = `
     <RESULT_SET_PROPERTIES>
   }
 `
-
+export const facetResultSetQueryNamedGraph = `
+  SELECT *
+  WHERE {
+    <NAMEDGRAPH_0>
+    {
+      # score and literal are used only for Jena full text index
+      SELECT ?id ?score ?literal {
+        <FILTER>
+        VALUES ?facetClass { <FACET_CLASS> }
+        ?id a ?facetClass .
+        <ORDER_BY_TRIPLE>
+      }
+      <ORDER_BY>
+      <PAGE>
+    }
+    FILTER(BOUND(?id))
+    <RESULT_SET_PROPERTIES>
+    <NAMEDGRAPH_1>
+  }
+`
 export const facetResultSetQuery = `
   SELECT *
   WHERE {
