@@ -6,34 +6,61 @@ import { has } from 'lodash'
 // import { placesConfig as oldPerspectiveConfig } from './lettersampo/perspective_configs/PlacesConfig'
 // import { INITIAL_STATE } from '../../client/reducers/lettersampo/placesFacets'
 
+/**
+ * This functions the Perspective config files (JSON) availables
+ * stored in `src/configs/${portalID}/search_perspectives/${perspectiveID}.json`
+ * parse the Object and stored into the backedSearchConfig variable.
+ * 
+ * It also retrieve the queries files attached to the perspective and save it into the
+ * object as query Blocks.
+ * 
+ * @returns backendSearchConfig
+ */
 export const createBackendSearchConfig = async () => {
   const portalConfigJSON = await readFile('src/configs/portalConfig.json')
   const portalConfig = JSON.parse(portalConfigJSON)
   const resultMappers = await import('./Mappers')
   const { portalID } = portalConfig
   const backendSearchConfig = {}
+
   for (const perspectiveID of portalConfig.perspectives.searchPerspectives) {
     const perspectiveConfigJSON = await readFile(`src/configs/${portalID}/search_perspectives/${perspectiveID}.json`)
+
+    // retrieve the config object of the search perspective
     const perspectiveConfig = JSON.parse(perspectiveConfigJSON)
-    if (!has(perspectiveConfig, 'sparqlQueriesFile')) { continue } // skip dummy perspectives
+
+    // skip dummy perspectives 
+    if (!has(perspectiveConfig, 'sparqlQueriesFile')) { continue } 
+
+    // grab the file holding the queries to be applied
     const { sparqlQueriesFile } = perspectiveConfig
     const sparqlQueries = await import(`../sparql/${portalID}/sparql_queries/${sparqlQueriesFile}`)
+
+    // when exists retrieve the prefixes from the file and added as a property
     if (has(perspectiveConfig, 'endpoint')) {
       const { prefixesFile } = perspectiveConfig.endpoint
       const { prefixes } = await import(`../sparql/${portalID}/sparql_queries/${prefixesFile}`)
       perspectiveConfig.endpoint.prefixes = prefixes
     }
+
     if (perspectiveConfig.searchMode === 'faceted-search') {
       let extraResultClasses = {} // gather nested result classes here
       let hasInstancePageResultClasses = false
       // handle default resultClass which is same as perspectiveID
       const { paginatedResultsConfig, instanceConfig } = perspectiveConfig.resultClasses[perspectiveID]
+      
+      // get the name of the variable holding the query template to be applied
       const paginatedResultsPropertiesQueryBlockID = paginatedResultsConfig.propertiesQueryBlock
+      // get the actual query template string
       const paginatedResultsPropertiesQueryBlock = sparqlQueries[paginatedResultsPropertiesQueryBlockID]
+      // replace the name of the query template by the actual query template
       paginatedResultsConfig.propertiesQueryBlock = paginatedResultsPropertiesQueryBlock
+
       if (paginatedResultsConfig.postprocess) {
         paginatedResultsConfig.postprocess.func = resultMappers[paginatedResultsConfig.postprocess.func]
       }
+
+      // check if there is configuration for query Instances of the Classes
       if (instanceConfig) {
         const instancePagePropertiesQueryBlockID = instanceConfig.propertiesQueryBlock
         const instancePagePropertiesQueryBlock = sparqlQueries[instancePagePropertiesQueryBlockID]
@@ -58,6 +85,7 @@ export const createBackendSearchConfig = async () => {
           hasInstancePageResultClasses = true
         }
       }
+
       // handle other resultClasses
       for (const resultClass in perspectiveConfig.resultClasses) {
         if (resultClass === perspectiveID) { continue }
@@ -85,18 +113,22 @@ export const createBackendSearchConfig = async () => {
         }
       }
     }
+
     if (perspectiveConfig.searchMode === 'federated-search') {
       for (const dataset in perspectiveConfig.datasets) {
         perspectiveConfig.datasets[dataset].resultQuery = sparqlQueries.federatedSearchSparqlQueries[dataset].resultQuery
       }
     }
+
     if (perspectiveConfig.searchMode === 'full-text-search') {
       const queryBlockID = perspectiveConfig.propertiesQueryBlock
       const queryBlock = sparqlQueries[queryBlockID]
       perspectiveConfig.propertiesQueryBlock = queryBlock
     }
+
     backendSearchConfig[perspectiveID] = perspectiveConfig
   }
+
   for (const perspectiveID of portalConfig.perspectives.onlyInstancePages) {
     const perspectiveConfigJSON = await readFile(`src/configs/${portalID}/only_instance_pages/${perspectiveID}.json`)
     const perspectiveConfig = JSON.parse(perspectiveConfigJSON)
@@ -106,6 +138,7 @@ export const createBackendSearchConfig = async () => {
     const instancePagePropertiesQueryBlockID = instanceConfig.propertiesQueryBlock
     const instancePagePropertiesQueryBlock = sparqlQueries[instancePagePropertiesQueryBlockID]
     instanceConfig.propertiesQueryBlock = instancePagePropertiesQueryBlock
+
     if (instanceConfig.postprocess) {
       instanceConfig.postprocess.func = resultMappers[instanceConfig.postprocess.func]
     }
