@@ -29,6 +29,7 @@ export const getPaginatedResults = ({
     langTag = null,
     langTagSecondary = null
   } = perspectiveConfig
+
   const resultClassConfig = perspectiveConfig.resultClasses[resultClass]
   const {
     propertiesQueryBlock,
@@ -37,6 +38,7 @@ export const getPaginatedResults = ({
     resultMapperConfig = null,
     postprocess = null
   } = resultClassConfig.paginatedResultsConfig
+
   if (constraints == null && defaultConstraint == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {

@@ -3,6 +3,8 @@
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
+            "datasets",
+            "dataclasses",
             "perspective1",
             "perspective2",
             "perspective3",

@@ -73,6 +73,7 @@ createBackendSearchConfig().then(backendSearchConfig => {
   // https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
   app.post(`${apiPath}/faceted-search/:resultClass/paginated`, async (req, res, next) => {
     const { params, body } = req
+    console.log('result class: ', params.resultClass)
     try {
       const data = await getPaginatedResults({
         backendSearchConfig,
