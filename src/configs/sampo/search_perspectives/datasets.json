@@ -78,7 +78,16 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 250
+            "minWidth": 200
+        },
+        {
+            "id": "nAttributes",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 50
         },
         {
             "id": "fields",
@@ -87,7 +96,25 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 250
+            "minWidth": 200
+        },
+        {
+            "id": "countrows",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 50
+        },
+        {
+            "id": "countFeaturesWithNull",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 50
         }
     ],
     "facets": {
@@ -97,6 +124,14 @@
             "filterType": "textFilter",
             "sortByPredicate": "rdf:label",
             "textQueryProperty": "rdf:label"
+        },
+        "countrows": {
+            "containerClass": "ten",
+            "facetType": "integer",
+            "filterType": "integerFilter",
+            "predicate": "dw:countRows",
+            "searchField": true,
+            "sortByPredicate": "dw:countRows"
         }
     }
 }

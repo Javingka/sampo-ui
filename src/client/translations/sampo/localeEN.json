@@ -205,25 +205,25 @@
           "description": "Uniform Resource Identifier"
         },
         "prefLabel": {
-          "label": "Title",
-          "description": "The name or title of the Work.",
+          "label": "Name",
+          "description": "The name of the Dataset.",
           "textFacetInputPlaceholder": "Search..."
         },
         "fields": {
           "label": "Fields",
           "description": "Field of Dataset"
         },
-        "language": {
-          "label": "Language",
-          "description": "The language in which a Work is written in the manuscript (i.e., an “Expression” of a Work). One manuscript may contain multiple languages."
+        "countrows": {
+          "label": "# Rows",
+          "description": "number of Records on a table"
         },
-        "expression": {
-          "label": "Expression",
-          "description": "The expression(s) of the Work."
+        "countFeaturesWithNull": {
+          "label": "# Fields with Nulls",
+          "description": "Number of Fields withh Null values."
         },
-        "manuscript": {
-          "label": "Manuscript",
-          "description": "The specific manuscript(s) in which the Work can be found."
+        "nAttributes": {
+          "label": "# Fields",
+          "description": "Total number of Fields of this Dataset"
         },
         "productionTimespan": {
           "label": "Manuscript production date",
@@ -238,7 +238,8 @@
           "description": "The source database(s) (Schoenberg, Bibale, and Bodleian) that the Work occurs in. Click on the result table link to view the original record on the source’s website."
         }
       }
-    },    "dataclasses": {
+    },    
+    "dataclasses": {
       "label": "Data Classes",
       "facetResultsType": "dataclasses",
       "shortDescription": "DataClasses availables in DrumWave Single Ontology",
