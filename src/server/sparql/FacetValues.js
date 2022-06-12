@@ -3,7 +3,10 @@ import { has } from 'lodash'
 import {
   facetValuesQuery,
   facetValuesQueryTimespan,
-  facetValuesRange
+  facetValuesQueryTimespanNamedGraph,
+  facetValuesQueryTimespanNamedSchema,
+  facetValuesRange,
+  facetValuesRangeNamedGraph
 } from './SparqlQueriesGeneral'
 import {
   generateConstraintsBlock,
@@ -25,6 +28,7 @@ export const getFacet = async ({
   resultFormat,
   constrainSelf
 }) => {
+
   const facetConfig = backendSearchConfig[facetClass].facets[facetID]
   const { endpoint, defaultConstraint = null, langTag = null } = backendSearchConfig[facetClass]
   // choose query template and result mapper:
@@ -40,11 +44,11 @@ export const getFacet = async ({
       mapper = mapHierarchicalFacet
       break
     case 'timespan':
-      q = facetValuesQueryTimespan
+      q = facetValuesQueryTimespanNamedGraph
       mapper = mapTimespanFacet
       break
     case 'integer':
-      q = facetValuesRange
+      q = facetValuesRangeNamedGraph
       mapper = mapTimespanFacet
       break
     default:
@@ -104,6 +108,21 @@ export const getFacet = async ({
   } else {
     q = q.replace(/<UNKNOWN_VALUES>/g, unknownBlock)
   }
+
+  // fill template with named graph pattern
+  const namedGraph = backendSearchConfig[facetClass].namedGraph 
+  console.log('namedGraph: ', namedGraph)
+  if(namedGraph && namedGraph.length > 0 ){
+    q = q.replace('<NAMED_GRAPH_OPEN>', `GRAPH ${namedGraph} {`)
+    q = q.replace('<NAMED_GRAPH_CLOSE>', `}`)
+
+    console.log('query: ', q)
+  } else {
+    q = q.replace('<NAMED_GRAPH_OPEN>', '')
+    q = q.replace('<NAMED_GRAPH_CLOSE>', '')
+    console.log('query: ', q)
+  }
+
   q = q.replace('<SELECTED_VALUES>', selectedBlock)
   q = q.replace('<SELECTED_VALUES_NO_HITS>', selectedNoHitsBlock)
   q = q.replace(/<FACET_VALUE_FILTER>/g, facetConfig.facetValueFilter ? facetConfig.facetValueFilter : '')
@@ -159,6 +178,7 @@ export const getFacet = async ({
   // if (facetID === 'productionPlace') {
   //   console.log(endpoint.prefixes + q)
   // }
+
   const response = await runSelectQuery({
     query: endpoint.prefixes + q,
     endpoint: endpoint.url,
@@ -167,6 +187,7 @@ export const getFacet = async ({
     resultMapperConfig: facetConfig,
     resultFormat
   })
+
   if (facetConfig.facetType === 'hierarchical') {
     return ({
       facetClass: facetClass,
