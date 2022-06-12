@@ -80,11 +80,11 @@ export const getPaginatedResults = ({
   // fill template with named graph pattern
   const namedGraph = perspectiveConfig.namedGraph 
   if(namedGraph && namedGraph.length > 0 ){
-    q = q.replace('<NAMEDGRAPH_0>', `GRAPH ${namedGraph} {`)
-    q = q.replace('<NAMEDGRAPH_1>', `}`)
+    q = q.replace('<NAMED_GRAPH_OPEN>', `GRAPH ${namedGraph} {`)
+    q = q.replace('<NAMED_GRAPH_CLOSE>', `}`)
   } else {
-    q = q.replace('<NAMEDGRAPH_0>', '')
-    q = q.replace('<NAMEDGRAPH_1>', '')
+    q = q.replace('<NAMED_GRAPH_OPEN>', '')
+    q = q.replace('<NAMED_GRAPH_CLOSE>', '')
   }
 
 
@@ -252,11 +252,11 @@ export const getResultCount = ({
   // fill template with named graph pattern
   const namedGraph = perspectiveConfig.namedGraph 
   if(namedGraph && namedGraph.length > 0 ){
-    q = q.replace('<NAMEDGRAPH_0>', `GRAPH ${namedGraph} {`)
-    q = q.replace('<NAMEDGRAPH_1>', `}`)
+    q = q.replace('<NAMED_GRAPH_OPEN>', `GRAPH ${namedGraph} {`)
+    q = q.replace('<NAMED_GRAPH_CLOSE>', `}`)
   } else {
-    q = q.replace('<NAMEDGRAPH_0>', '')
-    q = q.replace('<NAMEDGRAPH_1>', '')
+    q = q.replace('<NAMED_GRAPH_OPEN>', '')
+    q = q.replace('<NAMED_GRAPH_CLOSE>', '')
   }
 
   q = q.replace(/<FACET_CLASS>/g, perspectiveConfig.facetClass)
