@@ -7,9 +7,9 @@ import { has } from 'lodash'
 // import { INITIAL_STATE } from '../../client/reducers/lettersampo/placesFacets'
 
 /**
- * This functions the Perspective config files (JSON) availables
+ * This function get the Perspective config files (JSON) availables,
  * stored in `src/configs/${portalID}/search_perspectives/${perspectiveID}.json`
- * parse the Object and stored into the backedSearchConfig variable.
+ * parsed the Object and stored into the backedSearchConfig variable
  * 
  * It also retrieve the queries files attached to the perspective and save it into the
  * object as query Blocks.

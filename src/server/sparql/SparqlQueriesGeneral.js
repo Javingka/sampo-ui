@@ -9,11 +9,11 @@ export const instanceQuery = `
 export const countQueryNamedGraph = `
   SELECT (COUNT(DISTINCT ?id) as ?count)
   WHERE {
-    <NAMEDGRAPH_0>
+    <NAMED_GRAPH_OPEN>
       <FILTER>
       VALUES ?facetClass { <FACET_CLASS> }
       ?id a ?facetClass .
-    <NAMEDGRAPH_1>
+    <NAMED_GRAPH_CLOSE>
   }
 `
 export const countQuery = `
@@ -43,7 +43,7 @@ export const fullTextQuery = `
 export const facetResultSetQueryNamedGraph = `
   SELECT *
   WHERE {
-    <NAMEDGRAPH_0>
+    <NAMED_GRAPH_OPEN>
     {
       # score and literal are used only for Jena full text index
       SELECT ?id ?score ?literal {
@@ -57,7 +57,7 @@ export const facetResultSetQueryNamedGraph = `
     }
     FILTER(BOUND(?id))
     <RESULT_SET_PROPERTIES>
-    <NAMEDGRAPH_1>
+    <NAMED_GRAPH_CLOSE>
   }
 `
 export const facetResultSetQuery = `
@@ -106,6 +106,31 @@ export const facetValuesQuery = `
   }
   <ORDER_BY>
 `
+export const facetValuesQueryTimespanNamedGraph = `
+  # ignore selections from other facets
+  SELECT ?min ?max {
+    <NAMED_GRAPH_OPEN>
+    {
+      SELECT (MIN(?start) AS ?min) {
+        ?instance <PREDICATE> ?timespan .
+        VALUES ?facetClass { <FACET_CLASS> }
+        ?instance a ?facetClass .
+        ?timespan <START_PROPERTY> ?start .
+        <FACET_VALUE_FILTER>
+      }
+    }
+    {
+      SELECT (MAX(?end) AS ?max) {
+        ?instance <PREDICATE> ?timespan .
+        VALUES ?facetClass { <FACET_CLASS> }
+        ?instance a ?facetClass .
+        ?timespan <END_PROPERTY> ?end .
+        <FACET_VALUE_FILTER>
+      }
+    }
+    <NAMED_GRAPH_CLOSE>
+  }
+`
 
 export const facetValuesQueryTimespan = `
   # ignore selections from other facets
@@ -128,6 +153,19 @@ export const facetValuesQueryTimespan = `
         <FACET_VALUE_FILTER>
       }
     }
+  }
+`
+
+export const facetValuesRangeNamedGraph = `
+  # ignore selections from other facets
+  SELECT (MIN(?value) AS ?min) (MAX(?value) AS ?max) {
+
+    <NAMED_GRAPH_OPEN>
+      ?instance <PREDICATE> ?value .
+      VALUES ?facetClass { <FACET_CLASS> }
+      ?instance a ?facetClass .
+      <FACET_VALUE_FILTER>
+    <NAMED_GRAPH_CLOSE>
   }
 `
 
