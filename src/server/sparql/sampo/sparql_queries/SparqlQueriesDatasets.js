@@ -11,20 +11,15 @@ export const datasetProperties = `
     }
     UNION
     {
-      ?id ^mmm-schema:manuscript_work ?manuscript__id .
-      ?manuscript__id rdfs:label ?manuscript__prefLabel .
-      BIND(CONCAT("/manuscripts/page/", REPLACE(STR(?manuscript__id), "^.*\\\\/(.+)", "$1")) AS ?manuscript__dataProviderUrl)
+      ?id dw:countRows ?countrows__prefLabel .
     }
     UNION
     {
-      ?id  ^mmm-schema:manuscript_work/crm:P46i_forms_part_of ?collection__id .
-      ?collection__id rdfs:label ?collection__prefLabel .
-      BIND(CONCAT("/collections/page/", ENCODE_FOR_URI(REPLACE(STR(?collection__id), "^.*\\\\/(.+)", "$1"))) AS ?collection__dataProviderUrl)
+      ?id dw:nAttributes ?nAttributes__prefLabel .
     }
     UNION
     {
-      ?id ^mmm-schema:manuscript_work/crm:P45_consists_of ?material__id .
-      ?material__id rdfs:label ?material__prefLabel .
+      ?id dw:countFeaturesWithNull ?countFeaturesWithNull__prefLabel .
     }
     UNION
     {
@@ -33,9 +28,8 @@ export const datasetProperties = `
     }
     UNION
     {
-      ?id 	dw:hasColumn ?fields__id .
+      ?id dw:hasColumn ?fields__id .
       ?fields__id rdfs:label ?fields__prefLabel .
-      BIND(CONCAT("/actors/page/", REPLACE(STR(?fields__id), "^.*\\\\/(.+)", "$1")) AS ?fields__dataProviderUrl)
     }
     UNION
     {
@@ -47,7 +41,6 @@ export const datasetProperties = `
         ?language__source__id rdfs:label ?language__source__prefLabel .
         ?language__id rdfs:label ?language__prefLabel .
       }
-      BIND(CONCAT("/expressions/page/", REPLACE(STR(?expression__id), "^.*\\\\/(.+)", "$1")) AS ?expression__dataProviderUrl)
     }
     UNION
     {
