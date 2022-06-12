@@ -92,6 +92,7 @@ export const generateConstraintsBlock = ({
     const defaultConstraintTriple = defaultConstraint.replace('<SUBJECT>', `?${filterTarget}`)
     filterStr += defaultConstraintTriple
   }
+   console.log('filterStr: ', filterStr)
   return filterStr
 }
 
@@ -104,42 +105,57 @@ const generateTextFilter = ({
   inverse
 }) => {
   const facetConfig = backendSearchConfig[facetClass].facets[facetID]
+
   const queryTargetVariable = facetConfig.textQueryPredicate
     ? '?textQueryTarget'
     : `?${filterTarget}`
+  // console.log('qqueryTargetVariable',queryTargetVariable)
+
   const querySubject = facetConfig.textQueryGetLiteral
     ? `( ${queryTargetVariable} ?score ?literal )`
     : queryTargetVariable
+
   let queryObject = ''
   if (has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
       has(facetConfig, 'textQueryHiglightingOptions')) {
     queryObject = `( ${facetConfig.textQueryProperty} '${queryString}' "${facetConfig.textQueryHiglightingOptions}" )`
   }
+  // console.log('queryObject 1',queryObject)
+
   if (!has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
        has(facetConfig, 'textQueryHiglightingOptions')) {
     queryObject = `( '${queryString}' "${facetConfig.textQueryHiglightingOptions}" )`
   }
+  // console.log('queryObject 2',queryObject)
+
   if (has(facetConfig, 'textQueryProperty') && !facetConfig.textQueryGetLiteral &&
        !has(facetConfig, 'textQueryHiglightingOptions')) {
     queryObject = `( ${facetConfig.textQueryProperty} '${queryString}' )`
   }
+  // console.log('queryObject 3',queryObject)
+
   if (!has(facetConfig, 'textQueryProperty') && !facetConfig.textQueryGetLiteral &&
        !has(facetConfig, 'textQueryHiglightingOptions')) {
     queryObject = `'${queryString}'`
   }
+  // console.log('queryObject 4',queryObject)
+
   const filterStr = facetConfig.textQueryPredicate
     ? `${queryTargetVariable} text:query ${queryObject} .
     ?${filterTarget} ${facetConfig.textQueryPredicate} ${queryTargetVariable} .`
     : `${querySubject} text:query ${queryObject} .`
+
   if (inverse) {
     return `
-      FILTER NOT EXISTS {
-        ${filterStr}
-        ?instance ?predicate ?id . 
-      }
+        FILTER NOT EXISTS {
+          ${filterStr}
+          ?instance ?predicate ?id . 
+        }
     `
   } else {
-    return filterStr
+    return `
+        ${filterStr}
+    `
   }
 }
 

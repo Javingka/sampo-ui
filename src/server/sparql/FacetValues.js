@@ -17,6 +17,7 @@ import {
   mapHierarchicalFacet,
   mapTimespanFacet
 } from './Mappers'
+import { parseNamedGraph } from './TemplateParser'
 
 export const getFacet = async ({
   backendSearchConfig,
@@ -110,18 +111,7 @@ export const getFacet = async ({
   }
 
   // fill template with named graph pattern
-  const namedGraph = backendSearchConfig[facetClass].namedGraph 
-  console.log('namedGraph: ', namedGraph)
-  if(namedGraph && namedGraph.length > 0 ){
-    q = q.replace('<NAMED_GRAPH_OPEN>', `GRAPH ${namedGraph} {`)
-    q = q.replace('<NAMED_GRAPH_CLOSE>', `}`)
-
-    console.log('query: ', q)
-  } else {
-    q = q.replace('<NAMED_GRAPH_OPEN>', '')
-    q = q.replace('<NAMED_GRAPH_CLOSE>', '')
-    console.log('query: ', q)
-  }
+  q = parseNamedGraph(q, backendSearchConfig[facetClass])
 
   q = q.replace('<SELECTED_VALUES>', selectedBlock)
   q = q.replace('<SELECTED_VALUES_NO_HITS>', selectedNoHitsBlock)

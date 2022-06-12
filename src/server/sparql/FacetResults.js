@@ -10,6 +10,7 @@ import {
   instanceQuery,
   facetResultSetQueryNamedGraph
 } from './SparqlQueriesGeneral'
+import { parseNamedGraph } from './TemplateParser'
 
 export const getPaginatedResults = ({
   backendSearchConfig,
@@ -78,15 +79,7 @@ export const getPaginatedResults = ({
 
 
   // fill template with named graph pattern
-  const namedGraph = perspectiveConfig.namedGraph 
-  if(namedGraph && namedGraph.length > 0 ){
-    q = q.replace('<NAMED_GRAPH_OPEN>', `GRAPH ${namedGraph} {`)
-    q = q.replace('<NAMED_GRAPH_CLOSE>', `}`)
-  } else {
-    q = q.replace('<NAMED_GRAPH_OPEN>', '')
-    q = q.replace('<NAMED_GRAPH_CLOSE>', '')
-  }
-
+  q = parseNamedGraph(q, perspectiveConfig)
 
   q = q.replace(/<FACET_CLASS>/g, facetClass)
   q = q.replace('<PAGE>', `LIMIT ${pagesize} OFFSET ${page * pagesize}`)
@@ -97,7 +90,7 @@ export const getPaginatedResults = ({
   if (langTagSecondary) {
     q = q.replace(/<LANG_SECONDARY>/g, langTagSecondary)
   }
-  // console.log(endpoint.prefixes + q)
+
   return runSelectQuery({
     query: endpoint.prefixes + q,
     endpoint: endpoint.url,
@@ -250,15 +243,8 @@ export const getResultCount = ({
   }
 
   // fill template with named graph pattern
-  const namedGraph = perspectiveConfig.namedGraph 
-  if(namedGraph && namedGraph.length > 0 ){
-    q = q.replace('<NAMED_GRAPH_OPEN>', `GRAPH ${namedGraph} {`)
-    q = q.replace('<NAMED_GRAPH_CLOSE>', `}`)
-  } else {
-    q = q.replace('<NAMED_GRAPH_OPEN>', '')
-    q = q.replace('<NAMED_GRAPH_CLOSE>', '')
-  }
-
+  q = parseNamedGraph(q, perspectiveConfig)
+  
   q = q.replace(/<FACET_CLASS>/g, perspectiveConfig.facetClass)
   // console.log(endpoint.prefixes + q)
   return runSelectQuery({
