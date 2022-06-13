@@ -89,8 +89,8 @@
             ]
         },
         "mainPage": {
-            "bannerImage": "main_page/map_img.png",
-            "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
+            "bannerImage": "main_page/logodw--big.png",
+            "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
             "bannerReducedHeight": 220,
             "bannerDefaultHeight": 300,

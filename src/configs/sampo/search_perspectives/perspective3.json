@@ -5,6 +5,7 @@
         "useAuth": false,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
+    "hideCardOnFrontPage": true,
     "sparqlQueriesFile": "SparqlQueriesPerspective3.js",
     "baseURI": "http://ldf.fi/mmm",
     "URITemplate": "<BASE_URI>/event/<LOCAL_ID>",

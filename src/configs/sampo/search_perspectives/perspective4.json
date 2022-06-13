@@ -1,5 +1,6 @@
 {
     "id": "perspective4",
+    "hideCardOnFrontPage": true,
     "sparqlQueriesFile": "SparqlQueriesPerspective4.js",
     "sparqlQueries": "federatedSearchSparqlQueries",
     "frontPageImage": "main_page/places-452x262.jpg",
