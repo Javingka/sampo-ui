@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
     "facetClass": "dw:Dataset",
     "namedGraph": "?g",
-    "frontPageImage": "main_page/works-452x262.jpg",
+    "frontPageImage": "main_page/dset3.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"

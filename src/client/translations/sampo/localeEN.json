@@ -5,15 +5,15 @@
     "description": "The Sampo-UI framework makes it possible to create highly customizable, user-friendly, and responsive user interfaces using current state-of-the-art JavaScript libraries and data from SPARQL endpoints."
   },
   "appTitle": {
-    "short": "Sampo-UI",
-    "mobile": "S-UI",
-    "long": "&nbsp; &nbsp; Sampo-UI &nbsp; &nbsp;",
-    "subheading": "\"Here to forge for us the Sampo, Hammer us the lid in colors\""
+    "short": "Data Map",
+    "mobile": "dMap",
+    "long": "&nbsp; &nbsp; Data Map &nbsp; &nbsp;",
+    "subheading": "Data Ecosystem Mapping"
   },
-  "appDescription1": "Sampo is a web service for searching and studying place names. The search results can be viewed as a table, on maps, and as statistical distributions. Historical and current background maps are provided.",
-  "appDescription2": "Start by choosing source dataset(s) and input a place name on the search field. Alternatively you can search by area.",
+  "appDescription1": "DataMap is a web service for searching and studying Data Ecosystems. The search results can be viewed as a table, on maps, and as statistical distributions. Historical and current background maps are provided.",
+  "appDescription2": "",
   "selectPerspective": "Select a perspective to search and browse the knowledge graph:",
-  "mainPageImageLicence": "Images used under license from Shutterstock.com",
+  "mainPageImageLicence": "© Copyright 2022 | Drumwave Inc.",
   "backendErrorText": "One of the backend services is not available at the moment. Please try again later.",
   "infoHeader": {
     "toggleInstructions": "Click to show or hide instructions"

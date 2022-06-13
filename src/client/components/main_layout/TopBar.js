@@ -17,7 +17,7 @@ import TopBarInfoButton from './TopBarInfoButton'
 import TopBarLanguageButton from './TopBarLanguageButton'
 import Divider from '@mui/material/Divider'
 import { has } from 'lodash'
-import secoLogo from '../../img/logos/seco-logo-48x50.png'
+import dwLogo from '../../img/logos/logodw-solid.png'
 
 /**
  * Responsive app bar with a search field, perspective links, info links and a language
@@ -333,7 +333,7 @@ const TopBar = props => {
           </Box>
           <Box
             component='a'
-            href='https://seco.cs.aalto.fi'
+            href='https://dwave.ai/'
             target='_blank'
             rel='noopener noreferrer'
             sx={theme => ({
@@ -346,13 +346,13 @@ const TopBar = props => {
             <Button aria-label='link to Semantic Computing research group homepage'>
               <Box
                 component='img'
-                src={secoLogo}
+                src={dwLogo}
                 alt='Semantic Computing research group logo'
                 sx={theme => ({
                   height: 32,
                   [theme.breakpoints.up(props.layoutConfig.reducedHeightBreakpoint)]: {
-                    height: 50
-                  }
+                    height: 50,
+                  },
                 })}
               />
             </Button>

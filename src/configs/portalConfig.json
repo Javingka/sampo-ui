@@ -64,7 +64,7 @@
         "paginationToolbarHeight": 37,
         "tableFontSize": "0.8rem",
         "topBar": {
-            "logoImage": "logos/logo.png",
+            "logoImage": "logos/compass-solid.svg",
             "logoTextTransform": "none",
             "hideLogoTextOnMobile": true,
             "showLanguageButton": true,
@@ -89,7 +89,7 @@
             ]
         },
         "mainPage": {
-            "bannerImage": "main_page/mmm-banner.jpg",
+            "bannerImage": "main_page/map_img.png",
             "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
             "bannerReducedHeight": 220,
@@ -111,8 +111,8 @@
             }
         },
         "footer": {
-            "reducedHeight": 44,
-            "defaultHeight": 64
+            "reducedHeight": 0,
+            "defaultHeight": 0
         }
     },
     "mapboxConfig": {
