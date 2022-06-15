@@ -120,6 +120,7 @@ const Main = props => {
           </Box>
         </Box>
       </Box>
+      <div dangerouslySetInnerHTML={{ __html: "<iframe src='https://studio.lichen.com/' />"}} />
       <Box
         sx={theme => ({
           marginLeft: theme.spacing(1),
