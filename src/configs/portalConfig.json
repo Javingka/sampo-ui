@@ -5,6 +5,7 @@
         "searchPerspectives": [
             "datasets",
             "dataclasses",
+            "registryMap",
             "perspective1",
             "perspective2",
             "perspective3",

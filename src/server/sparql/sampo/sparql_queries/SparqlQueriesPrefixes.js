@@ -23,4 +23,6 @@ export const prefixes = `
   PREFIX gn: <http://www.geonames.org/ontology#>
   PREFIX semparls: <http://ldf.fi/schema/semparl/>
   PREFIX dw: <https://drumwave.com/ontologies/universal#>
+  PREFIX dwomr: <https://drumwave.com/ontologies/ontomergesreport#>
+
 `
