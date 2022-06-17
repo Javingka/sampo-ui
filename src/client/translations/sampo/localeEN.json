@@ -80,6 +80,7 @@
     "table": "table",
     "map": "map",
     "production_places": "production places",
+    "registry_graph": "registry graph",
     "production_places_heatmap": "production heatmap",
     "last_known_locations": "last known locations",
     "migrations": "migrations",
@@ -242,8 +243,8 @@
     },     
     "registryMap": {
       "label": "Registry Graphs",
-      "facetResultsType": "registry maps",
-      "shortDescription": "Registry Maps availables in DrumWave Data Ecosystem",
+      "facetResultsType": "registry graphs",
+      "shortDescription": "Registry Graphs",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to access data related to Works. The MMM data model follows the <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo</a> definition of a work, which refers to “distinct concepts or combinations of concepts identified in artistic and intellectual expressions.” Works contain title and author information. If two or more source datasets include the same Work and this has been verified, the information from the source datasets has been merged into one Work. See <a href=\"/instructions\">instructions</a> for using the filters. The result view can be selected using the tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> view gives you a list of specific works, and the manuscripts and manuscript collections in which they can be found. </li> <li> <strong>EXPORT</strong> the SPARQL query used to generate the result table view into YASGUI query editor. </li> </ul>",
       "instancePage": {
         "label": "Datasets-",
@@ -261,6 +262,10 @@
         },
         "nGraphType": {
           "label": "Type of Graph",
+          "description": ""
+        },
+        "nGraphName": {
+          "label": "Name of Graph",
           "description": ""
         },
         "language": {
