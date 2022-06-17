@@ -1,5 +1,23 @@
 const perspectiveID = 'datasets'
 
+export const registryNamedGraphs = `
+    {
+      
+      ?id a dwomr:NamedGraph .
+      BIND(strafter(str(?id), "--") as ?prefLabel__id)
+
+      BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+      BIND(?id as ?uri__id)
+      BIND(?id as ?uri__dataProviderUrl)
+      BIND(?id as ?uri__prefLabel)
+
+      BIND ( URI(CONCAT(STR(?id), "/v0" )) AS ?graph) .
+      BIND ( REPLACE( STR(?id), ".*/MainGraph/(.*)", "$1")as ?nGraphName__prefLabel) .
+      # BIND ( REPLACE( STR(?id), ".*/MainGraph/(\\\\w+/\\\\w+)/.*", "$1")as ?nGraphName__prefLabel) .
+      BIND ( REPLACE( STR(?id), ".*/MainGraph/(\\\\w+)/.*", "$1")as ?nGraphType__prefLabel) .
+    }
+`
+
 export const datasetProperties = `
     {
       
@@ -20,13 +38,13 @@ export const datasetProperties = `
     UNION
     {
       
-      SELECT (COUNT (?s1) AS ?countrows__prefLabel)  {
-        GRAPH ?g {
-         ?s1 a dw:CandidatesKeyCohort .
-         ?s1 rdfs:label ?countrows__prefLabel .
-        }
-        FILTER regex(str(?g), "StructuralKeyGraph")
-      }
+      # SELECT (COUNT (?s1) AS ?countrows__prefLabel)  {
+      #  GRAPH ?g {
+      #   ?s1 a dw:CandidatesKeyCohort .
+      #   ?s1 rdfs:label ?countrows__prefLabel .
+      #  }
+      #  FILTER regex(str(?g), "StructuralKeyGraph")
+      # }
     }
     UNION
     {

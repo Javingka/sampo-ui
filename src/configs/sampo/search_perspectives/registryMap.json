@@ -6,7 +6,7 @@
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
     "sparqlQueriesFile": "SparqlQueriesRegistryMaps.js",
-    "baseURI": "http://ldf.fi/mmm",
+    "baseURI": "https://drumwave.com",
     "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
     "facetClass": "dwomr:NamedGraph",
     "namedGraph": "?g",
@@ -15,16 +15,17 @@
     "defaultActiveFacets": [
         "prefLabel"
     ],
-    "defaultTab": "table",
-    "defaultInstancePageTab": "table",
+    "defaultTab": "registry_graph",
+    "defaultInstancePageTab": "registry_graph",
     "resultClasses": {
         "registryMap": {
             "paginatedResultsConfig": {
                 "tabID": 0,
+                "baseGraph": "<BASE_URI>/<ACCOUNT_ID>_registry/MainGraph/RegisterGraph/<DATASOURCE>/<DATASET_ID>--<DATASET_NAME>}/<VERSION>",
                 "component": "ResultTable",
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
-                "propertiesQueryBlock": "datasetProperties",
+                "propertiesQueryBlock": "registryNamedGraphs",
                 "pagesize": 10,
                 "sortBy": null,
                 "sortDirection": null
@@ -90,31 +91,13 @@
             "minWidth": 50
         },
         {
-            "id": "fields",
+            "id": "nGraphName",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
             "minWidth": 200
-        },
-        {
-            "id": "countrows",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 50
-        },
-        {
-            "id": "countFeaturesWithNull",
-            "valueType": "object",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": true,
-            "numberedList": false,
-            "minWidth": 50
         }
     ],
     "facets": {
